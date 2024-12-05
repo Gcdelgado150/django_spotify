@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %} <!-- Add this line -->
+
+{% block content %}
+    <div class="home">
+        <h2>Home</h2>
+        <div class="playlists">
+            {% for playlist in playlists %}
+                <div class="playlist">
+                    <h3>{{ playlist.name }}</h3>
+                    <p>{{ playlist.description }}</p>
+                    <ul>
+                        {% for song in playlist.songs.all %}
+                            <li>
+                                <button class="play-song" data-song-id="{{ song.id }}">
+                                    Play: {{ song.name }} - {{ song.artist.name }}
+                                </button>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+{% endblock %}

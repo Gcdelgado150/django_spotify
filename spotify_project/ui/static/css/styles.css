@@ -1,0 +1,170 @@
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+  
+/* Container that wraps the sidebar and content */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+ 
+/* Content area styles */
+.content {
+    margin-left: 250px; /* Equal to sidebar width */
+    flex-grow: 1; /* Ensures this takes up the available space */
+    background-color: #3f3f3f;
+    padding: 20px;
+    overflow-y: auto; /* Allows scrolling if content overflows */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px; /* Adjust width as needed */
+    background-color: #121212;
+    position: fixed; /* Keeps sidebar fixed on the left */
+    height: 100%; /* Full height of the page */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding-left: 10px;
+    padding-top: 10px;
+
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+  
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1db954;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit; /* Ensure the text has the same color as the logo */
+    display: flex;
+    align-items: center;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #1db954;
+    margin-right: 10px;
+}
+.logo a:hover {
+    color: #fff; /* Make the text white on hover */
+}
+
+.logo .circle:hover {
+    background-color: #1ed760; /* Lighter green for hover effect */
+}
+
+
+.menu ul {
+list-style: none;
+padding: 0;
+}
+
+.menu li {
+margin: 15px 0;
+}
+
+.menu a {
+text-decoration: none;
+color: #b3b3b3;
+}
+
+.menu a:hover {
+color: #fff;
+}
+ 
+
+/* Home page specific styles */
+.home {
+    /*margin-left: 0;  /* Adjust this if the content is being cut off */
+    padding: 20px;
+}
+/* Footer player styles */
+.player {
+    background-color: #282828;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    width: 100%; 
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.now-playing {
+    display: flex;
+    align-items: center;
+}
+
+.now-playing img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+audio {
+    width: 60%;
+}
+
+
+.controls button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#progress-bar {
+    width: 300px;
+    cursor: pointer;
+}
+
+
+
