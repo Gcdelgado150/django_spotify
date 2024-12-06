@@ -8,6 +8,8 @@ Replicating Spotify using Django
 ## Make the login actually matter (each user has to see his own thing)
 ## Make logout block visualizations
 https://www.youtube.com/watch?v=23Cwx56JCOs -> 50mins
+from django.contrib.auth.decorators import login_required
+@login_required
 
 ## Adicionar google, and others login
 
