@@ -35,3 +35,7 @@ class Playlist(models.Model):
 
     def __str__(self):
         return self.name
+    
+class User(models.Model):
+    # Add liked songs Many-to-Many field
+    liked_songs = models.ManyToManyField(Song, related_name='liked_by', blank=True)

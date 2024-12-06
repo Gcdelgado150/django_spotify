@@ -4,4 +4,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),  # Admin interface
     path('', include('music.urls')),  # Redirect home URL to the music app
+    path('', include('accounts.urls')),  # Redirect home URL to the music app
 ]

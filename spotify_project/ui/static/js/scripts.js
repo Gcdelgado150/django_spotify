@@ -46,9 +46,13 @@ document.addEventListener('DOMContentLoaded', function() {
           fetch(`/song/${songId}/play/`)
               .then(response => response.json())
               .then(data => {
-                  // Update the footer (now playing) text with the song details
-                  document.getElementById('nowPlayingText').textContent = `${data.name} - ${data.artist}`;
+                // Update the footer (now playing) text with the song details
+                const nowPlayingSpan = document.querySelector('.now-playing span');
+                nowPlayingSpan.textContent = `${data.name} - ${data.artist}`;
 
+                  // const albumCover = document.getElementById('albumCover');
+                  // albumCover.src = data.album.name;  // Assume this field is in your response
+                  
                   // Update the audio player source
                   const audioPlayer = document.getElementById('audioPlayer');
                   audioPlayer.src = data.file_url;
@@ -62,4 +66,26 @@ document.addEventListener('DOMContentLoaded', function() {
               });
       });
   });
+
+  // Handle Like Buttons
+  const likeButtons = document.querySelectorAll('.like-song');
+    
+  likeButtons.forEach(button => {
+      button.addEventListener('click', function() {
+          const songId = this.getAttribute('data-song-id');
+          
+          // Fetch request to like the song
+          fetch(`/song/${songId}/like/`, { method: 'POST' })
+              .then(response => response.json())
+              .then(data => {
+                  if (data.success) {
+                      alert('Song added to your liked songs!');
+                  } else {
+                      alert('Error liking song!');
+                  }
+              })
+              .catch(error => console.error('Error liking song:', error));
+      });
+  });
+  
 });

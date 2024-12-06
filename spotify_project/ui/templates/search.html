@@ -4,4 +4,28 @@
 {% block content %}
     <h1>Search Page</h1>
     <p>Search for your favorite songs, artists, or albums here.</p>
+    
+    <!-- Search Form -->
+    <form method="GET" action="{% url 'search' %}">
+        <input type="text" name="query" placeholder="Search for songs..." required>
+        <button type="submit">Search</button>
+    </form>
+    
+    <!-- Display Search Results -->
+    <div class="home_search">
+        <div class="all_songs">
+            {% for song in songs %}
+                <div class="song">
+                    <h3>{{ song.name }}</h3> 
+                    <p>{{ song.artist.name }}</p>
+                    <button class="play-song" data-song-id="{{ song.id }}">
+                        <i class="fas fa-play"></i>  <!-- Play icon -->
+                    </button>
+                    <button class="like-song" data-song-id="{{ song.id }}">
+                        <i class="fas fa-heart"></i>  <!-- Like icon -->
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
