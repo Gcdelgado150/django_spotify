@@ -4,6 +4,7 @@ from .serializers import ArtistSerializer, AlbumSerializer, SongSerializer
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 class ArtistViewSet(viewsets.ModelViewSet):
     queryset = Artist.objects.all()
@@ -17,17 +18,20 @@ class SongViewSet(viewsets.ModelViewSet):
     queryset = Song.objects.all()
     serializer_class = SongSerializer
 
+@login_required
 def home(request):
-    playlists = Playlist.objects.all()
+    playlists = Playlist.objects.filter(user=request.user)
     return render(request, 'index.html', {'playlists': playlists})
 
 # Search view
+@login_required
 def search(request):
     query = request.GET.get('query', '')  # Get the search query from the form
     songs = Song.objects.filter(name__icontains=query) if query else Song.objects.all()
     return render(request, 'search.html', {'songs': songs, 'query': query})
 
 # Library view
+@login_required
 def library(request):
     return render(request, 'library.html')
 

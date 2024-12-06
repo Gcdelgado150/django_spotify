@@ -29,12 +29,13 @@ class Song(models.Model):
 
 # Playlist Model
 class Playlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT, null=True)  # Add this line
     name = models.CharField(max_length=100)
     description = models.TextField()
     songs = models.ManyToManyField(Song)
 
     def __str__(self):
-        return self.name
+        return f'{self.user.username} -  {self.name}'
     
 class User(models.Model):
     # Add liked songs Many-to-Many field
